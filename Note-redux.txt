@@ -81,4 +81,8 @@ github
 create repository
 copy long code
 terminal=>
-git initial
+git init
+git add .
+git commit -m "counter with redux"
+git remote add origin https://github.com/iamalfiyaanas/Redux-Counter.git
+git push origin master
