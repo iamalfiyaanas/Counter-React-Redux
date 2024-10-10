@@ -1,0 +1,84 @@
+1. delete code in app.cs  & index.css
+2. index.html => write title , paste bootstrap cdn link
+3. app.jsx => delete unwanted code & import statements, write a heading
+4. app.css => write css code for basic styles
+5. create components folder in src
+6. create Counter.jsx in components
+7. app.jsx => write heading like Counter App &import Counter.jsx & write component name in self closing tag. [<Counter/>]
+8. Counter.jsx => write basic JS code for counter app as shown in pic(design the page including bootstrap style & classname)
+9. implement REDUX : installing command in terminal - npm install @reduxjs/toolkit react-redux
+10. create folder in src named redux
+11. create CounterStore.js in redux folder
+
+counterStore.js  =>
+
+1. call configureStore() for creating store which is capable for storing datas.
+
+- when i called configureStore(), it gives import statement automatically.
+- when i called configureStore(), it returns store. so, call cheyyumbo return cheyth kittunnayale oru variable lekk store cheyyunnu. 
+    like: const counterStore = configureStore()
+- need of that variable is -we providing this store to react application.if we can done this, stored item must be in a variable
+- if we can use counterStore from this file to another file , we must export that file.like : export default counterStore
+
+2. store undakkan : 
+
+- call configureStore() method -> athinte configuration object '{}' aayitt paranju kodukkanam.like : const counterStore = configureStore({})
+
+3.provide store to react application :
+
+-react-redux use cheyyumbo mathram redux & react thammilulla connenction paranju kodukkanulla methods kittunnath. configureStore toolkittinteyanu.aa store react applicationu paranju kodukkanamenkil react redux nte akath predefine cheytha 'Provider'component vazhi mathrame pattullu.
+-entire application le ella component num ee store ne orepole access cheyyan provider use cheyth root componentinu store kodukkanam. 
+- root component is main.jsx =>
+    - in main.jsx, ee <App /> nu store paranju kodukkanam.
+    - store paranju kodukkan,react-redux nakathulla provider component venam. import statement for provider from react-redux : import { Provider } from 'react-redux'.
+    - then,ee privider component engane kodukkunnu?
+        - routing concept pole,routing nte full features application nil varan venditt broserRouter nte akath application konduvachu.same way, provider nte full features appinu kittan vendittu provider selector nte child aayitt app ne vakkunnu.
+            - App ne provider nte akath render cheyyunnu.eg: <Provider><App /></Provider> 
+            - bcz provider nte akath store enna key loode mathre store paranju kodukkan pattullu. eg: <Provider store={}><App /></Provider>.store={} -> ivide eth value aano assign cheyyunnath ath aayirikkanam nammude redux nte store.
+            - nmde redux nte store nte peru : counterStore then, <Provider store={counterStore}><App /></Provider> . then counterStore is automatically imported. 
+    - [we check on browser, output is not shown.click on inspect & click console .there is an error for reducer argument.] configureStore oru empty object ayitt koduthal pora.we must pass an argument named 'reducer'.which is an object.eg: reducer:{}.then output is seen.[state is a type of storing value]
+- how to store values in store?
+    - create an action property in redux corresponding to the value which is storing in store.
+    - Action ->store il store cheyyunna values kittanulla logics
+        [ eg: another api call project:-
+        - use same data in multiple components -> these types are stored in store.
+        - api call cheyth kittunna result aanu store il store cheyyanda data.ee result kittan vendi api call cheyyuka ennulla logic aanu ivide implement cheythath.]
+        -in this project: 
+            - store cheyyanda value => counter nte value aanu
+            - how to change value in counter => using 3 button[increment,reset,decrement]
+            - increment => when click button =>value of counter increasing by 1.so, to change the value of state by adding 1. this logic is called action.
+            - decrement : substracted by 1
+            - reset : replaced by 0
+            -Increment By Amount : update value of state by input Amount
+        - changing state value 4 different types in this project[increment,decrement,reset,Increment By Amount]
+        - if this is done by redux, we must create 4 types action for updating state value in redux
+        - store il varendath updated value ayirikkanam. action il automatically updated value varum. reducer undenkile updated value store nu kittullu.
+        - engane value ne update cheyyanamenna logic redux il action ayittu paranju kodukkanam. action nte result aanu updated value.ath store il reducer lude kodukkunnu.so that , store nte akath configure cheyyumbo valid ayittulla reducer kodukkanam. reducer:{}
+        - oru single state ne 4 reethiyil change cheyyunnu. so oru reducer mathi & 4 action venam.
+
+string akkan = '+' using in js
+========================================================================================
+                            REDUX - STATE MANAGEMENT TOOL
+                            =============================                         
+
+1. to avoid 'props drilling' & manage state in react app
+2. Packages needed to implement REDUX : installing command - npm install @reduxjs/toolkit react-redux
+    - React-Redux : Official react binding from REDUX
+    - Redux Toolkit : toolset for efficient Redux development
+3. REDUX Features
+    - Creation of Store : used to hold all states 
+        - configureStore() : helps to create store to hold all states in an app.
+        to provide store to react app use 'Provider' component from react-redux library.
+        - Action : used to define logic to update state.
+        - Reducer : used to hold updated value of state in store
+        - createSlice() : used to combine both action and its reducer, it return actions, reducer, we pass argument createSlice as object (name, initial state, reducers)
+        - useSelector hook : used to access state from store to component, syntax : useSelector(state=>state.reducer-name) 
+        - useDispatch hook : used to execute action from a component and it returns the dispatch function capable of executing action from the redux store can pass argument as action
+
+github
+======
+
+create repository
+copy long code
+terminal=>
+git initial
